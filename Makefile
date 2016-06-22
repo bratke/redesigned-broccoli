@@ -8,3 +8,10 @@ default: all
 	$(MAKE) -C scan_examples $@
 	$(MAKE) -C geospatial_examples $@
 	$(MAKE) -C async_examples $@
+
+.PHONY: cmake
+cmake:
+	rm -rf build
+	mkdir build
+	cd build && cmake ..
+	cd build && make
