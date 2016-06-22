@@ -64,7 +64,8 @@ main(int argc, char* argv[])
 	LOG("append 10 values from 0 to 9");
 
 	// The first append will create the record and bin.
-	for (int i = 0; i < 10; i++) {
+	int i;
+	for (i = 0; i < 10; i++) {
 		as_operations_inita(&ops, 1);
 		as_operations_add_list_append_int64(&ops, "test-bin-1", i);
 

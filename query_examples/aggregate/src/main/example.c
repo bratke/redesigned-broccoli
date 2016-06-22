@@ -315,7 +315,8 @@ insert_records(aerospike* p_as)
 
 	// Re-using rec, write records into the database such that each record's key
 	// and test-bin value is based on the loop index.
-	for (uint32_t i = 0; i < g_n_keys; i++) {
+	uint32_t i;
+	for (i = 0; i < g_n_keys; i++) {
 		as_error err;
 
 		// No need to destroy a stack as_key object, if we only use
@@ -348,7 +349,8 @@ generate_numbers(char* numbers)
 	char* p_write = numbers;
 
 	// Generate a comma-separated string of number tokens.
-	for (int i = 0; i < TOKENS_PER_BIN; i++) {
+	int i;
+	for (i = 0; i < TOKENS_PER_BIN; i++) {
 		p_write += sprintf(p_write, "%d,", (rand() % MAX_TOKEN) + 1);
 	}
 

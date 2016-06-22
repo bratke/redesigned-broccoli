@@ -116,7 +116,8 @@ insert_records(uint32_t* counter)
 	// Put up to max_commands on the async queue at a time.
 	int block_size = g_n_keys >= max_commands ? max_commands : g_n_keys;
 
-	for (uint32_t i = 0; i < block_size; i++) {
+	uint32_t i;
+	for (i = 0; i < block_size; i++) {
 		if (! insert_record(event_loop, counter, i)) {
 			break;
 		}

@@ -184,7 +184,8 @@ insert_records(aerospike* p_as)
 
 	// Re-using rec, write records into the database such that each record's key
 	// and (test-bin) value is based on the loop index.
-	for (uint32_t i = 0; i < g_n_keys; i++) {
+	uint32_t i;
+	for (i = 0; i < g_n_keys; i++) {
 		as_error err;
 
 		// Set up a default as_policy_write object.

@@ -83,7 +83,8 @@ main(int argc, char* argv[])
 	as_batch batch;
 	as_batch_inita(&batch, g_n_keys);
 
-	for (uint32_t i = 0; i < g_n_keys; i++) {
+	uint32_t i;
+	for (i = 0; i < g_n_keys; i++) {
 		as_key_init_int64(as_batch_keyat(&batch, i), g_namespace, g_set,
 				(int64_t)i);
 	}
@@ -123,7 +124,7 @@ main(int argc, char* argv[])
 
 	uint32_t n_end = n_start + n_to_delete;
 
-	for (uint32_t i = n_start; i < n_end; i++) {
+	for (i = n_start; i < n_end; i++) {
 		// No need to destroy a stack as_key object, if we only use
 		// as_key_init_int64().
 		as_key key;
@@ -179,7 +180,8 @@ batch_read_cb(const as_batch_read* results, uint32_t n, void* udata)
 
 	uint32_t n_found = 0;
 
-	for (uint32_t i = 0; i < n; i++) {
+	uint32_t i;
+	for (i = 0; i < n; i++) {
 		LOG("index %u, key %" PRId64 ":", i,
 				as_integer_getorelse((as_integer*)results[i].key->valuep, -1));
 
@@ -228,7 +230,8 @@ insert_records(aerospike* p_as)
 
 	// Re-using rec, write records into the database such that each record's key
 	// and (test-bin) value is based on the loop index.
-	for (uint32_t i = 0; i < g_n_keys; i++) {
+	uint32_t i;
+	for (i = 0; i < g_n_keys; i++) {
 		as_error err;
 
 		// No need to destroy a stack as_key object, if we only use

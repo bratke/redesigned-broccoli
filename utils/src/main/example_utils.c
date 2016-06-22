@@ -503,7 +503,8 @@ example_read_test_records(aerospike* p_as)
 {
 	// Multiple-record examples insert g_n_keys records, using integer keys from
 	// 0 to (g_n_keys - 1).
-	for (uint32_t i = 0; i < g_n_keys; i++) {
+	uint32_t i;
+	for (i = 0; i < g_n_keys; i++) {
 		as_error err;
 
 		// No need to destroy a stack as_key object, if we only use
@@ -545,7 +546,8 @@ example_remove_test_records(aerospike* p_as)
 {
 	// Multiple-record examples insert g_n_keys records, using integer keys from
 	// 0 to (g_n_keys - 1).
-	for (uint32_t i = 0; i < g_n_keys; i++) {
+	uint32_t i;
+	for (i = 0; i < g_n_keys; i++) {
 		as_error err;
 
 		// No need to destroy a stack as_key object, if we only use
@@ -829,7 +831,8 @@ example_dump_operations(const as_operations* p_ops)
 	LOG("  generation %u, ttl %u, %u op%s:", p_ops->gen, p_ops->ttl, num_ops,
 			num_ops == 1 ? "" : "s");
 
-	for (uint16_t n = 0; n < num_ops; n++) {
+	uint16_t n;
+	for (n = 0; n < num_ops; n++) {
 		example_dump_op(&p_ops->binops.entries[n]);
 	}
 }

@@ -109,7 +109,8 @@ insert_records(uint32_t* counter)
 	// Put up to max_commands on the async queue at a time.
 	int block_size = g_n_keys >= max_commands ? max_commands : g_n_keys;
 
-	for (uint32_t i = 0; i < block_size; i++) {
+	uint32_t i;
+	for (i = 0; i < block_size; i++) {
 		if (! insert_record(event_loop, counter, i)) {
 			break;
 		}
@@ -175,7 +176,8 @@ batch_read(as_event_loop* event_loop)
 	// Make a batch of all the keys we inserted.
 	as_batch_read_records* records = as_batch_read_create(g_n_keys);
 
-	for (uint32_t i = 0; i < g_n_keys; i++) {
+	uint32_t i;
+	for (i = 0; i < g_n_keys; i++) {
 		as_batch_read_record* record = as_batch_read_reserve(records);
 		as_key_init_int64(&record->key, g_namespace, g_set, (int64_t)i);
 		record->read_all_bins = true;
@@ -203,7 +205,8 @@ batch_listener(as_error* err, as_batch_read_records* records, void* udata, as_ev
 
 	uint32_t n_found = 0;
 
-	for (uint32_t i = 0; i < list->size; i++) {
+	uint32_t i;
+	for (i = 0; i < list->size; i++) {
 		as_batch_read_record* record = as_vector_get(list, i);
 
 		LOG("index %u, key %" PRId64 ":", i, as_integer_getorelse((as_integer*)record->key.valuep, -1));
