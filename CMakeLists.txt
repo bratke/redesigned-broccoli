@@ -6,9 +6,12 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DAS_USE_LIBEV")
 
 include_directories("./utils/src/include")
 
+#set(SOURCE_FILES
+#        async_examples/async_get/src/main/example.c
+#        utils/src/main/example_utils.c)
+
 set(SOURCE_FILES
-        async_examples/async_get/src/main/example.c
-        utils/src/main/example_utils.c)
+        async_examples/async_tutorial.c)
 
 add_executable(async_examples ${SOURCE_FILES})
 
